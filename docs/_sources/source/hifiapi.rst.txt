@@ -1,0 +1,7 @@
+hifiapi module
+==============
+
+.. automodule:: src.hifiapi
+   :members:
+   :undoc-members:
+   :show-inheritance:

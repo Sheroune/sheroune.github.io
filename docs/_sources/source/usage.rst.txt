@@ -1,0 +1,142 @@
+Использование
+###############
+
+Установка
+*******************************************
+
+.. code-block:: bash
+
+    git clone https://git.miem.hse.ru/1249/customspeechsynthesismodel.git
+    cd customspeechsynthesismodel
+    pip install -r requirements.txt
+
+Использование предобученной модели
+*******************************************
+
+1. `Скачать веса и другие необходимые зависимости <https://drive.google.com/drive/folders/1i3JKe1bU7undOoZDZ5OFbHwcTXJaKF3q?usp=sharing>`_ и поместить в папку pretrained в корневом каталоге
+
+2. Выставить необходимые параметры (пути до моделей) в файле config.yaml
+
+3. Сгенерировать аудио:
+
+.. code-block:: bash
+
+    python run.py --text "текст" --output output/test.wav --speaker "RUSLAN" --duration 1.0 --pitch 1.0 --energy 1.0
+
+**Обязательные аргументы:** ``text`` и ``output``. Отвечают за синтезируемый текст и выходной аудио файл в формате wav
+
+**Аргументы по умолчанию:** ``speaker``, ``duration``, ``pitch`` и ``energy``. Отвечают за выбор голоса, продолжительность, высоту тона и энергию
+
+Таким образом, синтез можно сократить до следующей команды:
+
+.. code-block:: bash
+
+    python run.py --text "текст" --output output/test.wav
+
+Обучение своей модели
+***************************
+
+Приведение датасета к нужному виду
+===================================
+
+В качестве примера возьмем этот датасет: https://ruslan-corpus.github.io/
+Для получения необходимых транскрипций из одного файла запустите следующий скрипт:
+
+.. code-block:: bash
+
+    python data_utils/reorganize.py
+
+Предварительно может потребоваться изменить пути до аудио файлов и транскрипций в самом скрипте.
+
+Montreal Forced Aligner
+===================================
+
+Перед обучением модели необходимо получить информацию о длительности каждой фонемы.
+Эта информация хранится в .TextGrid файлах. Для их получения воспользуемся утилитой Montreal Forced Aligner.
+MFA может быть установлен через Anaconda:
+
+.. code-block:: bash
+
+    conda config --add channels conda-forge
+    conda install montreal-forced-aligner
+
+Далее есть два пути получения .TextGrid файлов:
+
+1) Использовать предобученную акустическую модель и словарь IPA фонем:
+
+Скачать модели:
+
+.. code-block:: bash
+
+    mfa model download acoustic russian_mfa
+    mfa model download dictionary russian_mfa
+
+Запусть сам aligner:
+
+.. code-block:: bash
+
+    mfa align ./путь/до/датасета russian_mfa russian_mfa ./путь/до/текстгридов
+
+
+В итоге, получаем файлы TextGrid в указанной директории
+
+
+2) Обучить модели для MFA самостоятельно:
+
+1. `Скачать словарь фонем <https://drive.google.com/file/d/1w7GJegDJdLw7Kyd75DShTz79-sIchYoz/view?usp=sharing>`_ или использовать свой
+
+2. Обучить G2P модель
+
+.. code-block:: bash
+
+    mfa train_g2p ./путь/до/словаря g2p.zip
+
+
+3. Сгенерировать словарь под свой датасет
+
+.. code-block:: bash
+
+    mfa g2p ./путь/до/датасета ./путь/до/g2p ./путь/до/нового/словаря.txt
+
+
+4. Обучить акустическую модель и получить TextGrid файлы
+
+.. code-block:: bash
+
+    mfa train ./путь/до/датасета ./путь/до/нового/словаря.txt ./путь/до/текстгридов
+
+
+Препроцессинг и обучение
+============================
+Датасет соответствовать следующему виду:
+
+.. code-block:: bash
+
+    data
+    ├── speaker_one
+    │   ├── record_1.TextGrid
+    │   ├── record_1.wav
+    │   └── record_1.txt
+    │
+    └── speaker_two
+        ├── ...
+        └── ...
+
+
+Далее необходимо настроить следующие параметры в config.yaml:
+- lexicon_path: путь до словаря фонем
+- raw_path: путь до датасета
+- ckpt_path: путь до генерации чекпоинтов модели
+
+Затем, запустите скрипт:
+
+.. code-block:: bash
+
+    python prepare_data.py
+
+
+Наконец, поставьте модель обучаться:
+
+.. code-block:: bash
+
+    python train.py

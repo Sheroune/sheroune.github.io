@@ -1,0 +1,7 @@
+generate\_audio module
+======================
+
+.. automodule:: generate_audio
+   :members:
+   :undoc-members:
+   :show-inheritance:

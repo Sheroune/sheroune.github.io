@@ -1,0 +1,7 @@
+audio\_process module
+=====================
+
+.. automodule:: src.fs_two.audio.tools
+   :members:
+   :undoc-members:
+   :show-inheritance:

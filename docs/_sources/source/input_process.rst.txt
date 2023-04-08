@@ -1,0 +1,7 @@
+input\_process module
+=====================
+
+.. automodule:: src.input_process
+   :members:
+   :undoc-members:
+   :show-inheritance:

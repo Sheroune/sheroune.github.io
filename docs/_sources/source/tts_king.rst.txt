@@ -1,0 +1,7 @@
+tts\_king module
+================
+
+.. automodule:: src.tts_king
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,45 @@
+hifi package
+============
+
+Submodules
+----------
+
+hifi.env module
+---------------
+
+.. automodule:: src.hifi.env
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+hifi.meldataset module
+----------------------
+
+.. automodule:: src.hifi.meldataset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+hifi.models module
+------------------
+
+.. automodule:: src.hifi.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+hifi.utils module
+-----------------
+
+.. automodule:: src.hifi.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.hifi
+   :members:
+   :undoc-members:
+   :show-inheritance:

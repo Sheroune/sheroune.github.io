@@ -1,0 +1,8 @@
+Установка
+=============
+
+Установите библиотеки
+
+.. code-block:: bash
+
+   pip install requirements.txt

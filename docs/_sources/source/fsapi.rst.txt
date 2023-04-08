@@ -1,0 +1,7 @@
+fsapi module
+============
+
+.. automodule:: src.fsapi
+   :members:
+   :undoc-members:
+   :show-inheritance:
