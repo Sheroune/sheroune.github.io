@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Алфавитный указатель" href="../genindex.html" /><link rel="search" title="Поиск" href="../search.html" /><link rel="next" title="&lt;no title&gt;" href="preprocess.html" /><link rel="prev" title="&lt;no title&gt;" href="config.html" />
+<link rel="index" title="Алфавитный указатель" href="../genindex.html" /><link rel="search" title="Поиск" href="../search.html" /><link rel="next" title="Предобработка данных для обучения" href="preprocess.html" /><link rel="prev" title="Конфигурационный файл" href="config.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>&lt;no title&gt; - документация synth 2023</title>
+        <title>Синтез речи - документация synth 2023</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -154,10 +154,13 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a></li>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Использование</a></li>
-<li class="toctree-l1"><a class="reference internal" href="train.html">train module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Конфигурационный файл</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Синтез речи</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocess.html">Предобработка данных для обучения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="train.html">Обучение своей модели</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Алфавитный указатель</a></li>
 </ul>
 
 </div>
@@ -186,13 +189,80 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
+          <section id="id1">
+<h1>Синтез речи<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.cssm.CSSM">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.cssm.</span></span><span class="sig-name descname"><span class="pre">CSSM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'config'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.cssm.CSSM" title="Ссылка на это определение">#</a></dt>
+<dd><p>Основной класс для работы с обученной звуковой моделью</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cssm.CSSM.generate_mel">
+<span class="sig-name descname"><span class="pre">generate_mel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration_control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch_control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_splits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tensor</span></span></span><a class="headerlink" href="#src.cssm.CSSM.generate_mel" title="Ссылка на это определение">#</a></dt>
+<dd><p>Генерация мел-спектрограммы из входного текста с использованием модели текст в речь с указанными параметрами.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – Входной текст для генерации мел-спектрограммы.</p></li>
+<li><p><strong>speaker</strong> (<em>str</em>) – Идентификатор говорящего для использования модели TTS.</p></li>
+<li><p><strong>duration_control</strong> (<em>float</em>) – Фактор контроля длительности для сгенерированной речи. По умолчанию 1.0.</p></li>
+<li><p><strong>pitch_control</strong> (<em>float</em>) – Фактор контроля высоты голоса для сгенерированной речи. По умолчанию 1.0.</p></li>
+<li><p><strong>energy_control</strong> (<em>float</em>) – Фактор контроля энергии голоса для сгенерированной речи. По умолчанию 1.0.</p></li>
+<li><p><strong>use_splits</strong> (<em>bool</em>) – Нужно ли разделять на части аудио для улучшения качества звука. По умолчанию True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Тензор torch, содержащий мел-спектрограмму для входного текста в виде массива значений типа float32.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cssm.CSSM.mel_to_wav">
+<span class="sig-name descname"><span class="pre">mel_to_wav</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mel_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#src.cssm.CSSM.mel_to_wav" title="Ссылка на это определение">#</a></dt>
+<dd><p>Генерация аудио-волны из мел-спектрограммы с использованием модели HiFi-GAN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mel_specs</strong> (<em>torch.tensor</em>) – Тензор мел-спектрограммы для генерации аудио-волны.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Numpy-массив, содержащий сгенерированную аудио-волну.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.cssm.CSSM.text_preprocess">
+<span class="sig-name descname"><span class="pre">text_preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#src.cssm.CSSM.text_preprocess" title="Ссылка на это определение">#</a></dt>
+<dd><p>Предварительная обработка русского текста путем транскрибирования его в последовательность фонем с использованием конвертера графемы-в-фонему (G2P).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Входной русский текст, который должен быть транскрибирован.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Numpy-массив целых чисел, представляющий последовательность фонем входного текста после предварительной обработки.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
         </article>
       </div>
       <footer>
@@ -203,7 +273,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">&lt;no title&gt;</div>
+                <div class="title">Предобработка данных для обучения</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -214,7 +284,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">&lt;no title&gt;</div>
+                <div class="title">Конфигурационный файл</div>
                 
               </div>
             </a>
@@ -236,8 +306,32 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Синтез речи</a><ul>
+<li><a class="reference internal" href="#src.cssm.CSSM"><code class="docutils literal notranslate"><span class="pre">CSSM</span></code></a><ul>
+<li><a class="reference internal" href="#src.cssm.CSSM.generate_mel"><code class="docutils literal notranslate"><span class="pre">CSSM.generate_mel()</span></code></a></li>
+<li><a class="reference internal" href="#src.cssm.CSSM.mel_to_wav"><code class="docutils literal notranslate"><span class="pre">CSSM.mel_to_wav()</span></code></a></li>
+<li><a class="reference internal" href="#src.cssm.CSSM.text_preprocess"><code class="docutils literal notranslate"><span class="pre">CSSM.text_preprocess()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

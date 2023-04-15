@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Алфавитный указатель" href="../genindex.html" /><link rel="search" title="Поиск" href="../search.html" /><link rel="next" title="train module" href="train.html" /><link rel="prev" title="&lt;no title&gt;" href="synthesis.html" />
+<link rel="index" title="Алфавитный указатель" href="../genindex.html" /><link rel="search" title="Поиск" href="../search.html" /><link rel="next" title="Обучение своей модели" href="train.html" /><link rel="prev" title="Синтез речи" href="synthesis.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>&lt;no title&gt; - документация synth 2023</title>
+        <title>Предобработка данных для обучения - документация synth 2023</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -154,10 +154,13 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a></li>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Использование</a></li>
-<li class="toctree-l1"><a class="reference internal" href="train.html">train module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Конфигурационный файл</a></li>
+<li class="toctree-l1"><a class="reference internal" href="synthesis.html">Синтез речи</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Предобработка данных для обучения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="train.html">Обучение своей модели</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Алфавитный указатель</a></li>
 </ul>
 
 </div>
@@ -186,13 +189,101 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
+          <section id="id1">
+<h1>Предобработка данных для обучения<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.fs_two.preprocessor.preprocessor.Preprocessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.fs_two.preprocessor.preprocessor.</span></span><span class="sig-name descname"><span class="pre">Preprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.fs_two.preprocessor.preprocessor.Preprocessor" title="Ссылка на это определение">#</a></dt>
+<dd><p>Класс для предварительной обработки необработанных речевых данных в mel-спектрограммы, характеристики высоты тона, длительности и энергии.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>dict</em>) – Словарь, содержащий все необходимые конфигурации для предварительной обработки данных.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.fs_two.preprocessor.preprocessor.Preprocessor.build_from_path">
+<span class="sig-name descname"><span class="pre">build_from_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.build_from_path" title="Ссылка на это определение">#</a></dt>
+<dd><p>Создает предварительно обработанные данные из аудио файлов для последующего обучения</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.fs_two.preprocessor.preprocessor.Preprocessor.get_alignment">
+<span class="sig-name descname"><span class="pre">get_alignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.get_alignment" title="Ссылка на это определение">#</a></dt>
+<dd><p>Считывает объект полученный с датагрид файла алайнера и получает его параметры в нужном формате</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tier</strong> – объект датагрид файла</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>фонемы, и разметку аудиофайла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.fs_two.preprocessor.preprocessor.Preprocessor.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.normalize" title="Ссылка на это определение">#</a></dt>
+<dd><p>Нормализует массивы numpy, хранящиеся в „in_dir“, путем вычитания заданного „mean“ и деления на „std“.
+Сохраняет нормализованные массивы вместо исходных массивов.
+Возвращает минимальное и максимальное значения, найденные в нормализованных массивах.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_dir</strong> (<em>str</em>) – str, каталог, содержащий массивы numpy, подлежащие нормализации</p></li>
+<li><p><strong>mean</strong> (<em>float</em>) – среднее значение</p></li>
+<li><p><strong>std</strong> (<em>float</em>) – стандартное отклонение</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>minimum and maximum values found in the normalized arrays</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.fs_two.preprocessor.preprocessor.Preprocessor.process_utterance">
+<span class="sig-name descname"><span class="pre">process_utterance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.process_utterance" title="Ссылка на это определение">#</a></dt>
+<dd><p>Функция для вычисления и сохранения характеристики высоты тона, длительности и энергии по аудиофайлу.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>basename</strong> (<em>str</em>) – название аудиофайла.</p></li>
+<li><p><strong>speaker</strong> (<em>str</em>) – идентификатор голоса.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.fs_two.preprocessor.preprocessor.Preprocessor.remove_outlier">
+<span class="sig-name descname"><span class="pre">remove_outlier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.remove_outlier" title="Ссылка на это определение">#</a></dt>
+<dd><p>Возврвщает исходный массив без выбросов</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>values</strong> (<em>np.ndarray</em>) – исходный массив</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>массив без выбросов</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
         </article>
       </div>
       <footer>
@@ -203,7 +294,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">train module</div>
+                <div class="title">Обучение своей модели</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -214,7 +305,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">&lt;no title&gt;</div>
+                <div class="title">Синтез речи</div>
                 
               </div>
             </a>
@@ -236,8 +327,34 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Предобработка данных для обучения</a><ul>
+<li><a class="reference internal" href="#src.fs_two.preprocessor.preprocessor.Preprocessor"><code class="docutils literal notranslate"><span class="pre">Preprocessor</span></code></a><ul>
+<li><a class="reference internal" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.build_from_path"><code class="docutils literal notranslate"><span class="pre">Preprocessor.build_from_path()</span></code></a></li>
+<li><a class="reference internal" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.get_alignment"><code class="docutils literal notranslate"><span class="pre">Preprocessor.get_alignment()</span></code></a></li>
+<li><a class="reference internal" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.normalize"><code class="docutils literal notranslate"><span class="pre">Preprocessor.normalize()</span></code></a></li>
+<li><a class="reference internal" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.process_utterance"><code class="docutils literal notranslate"><span class="pre">Preprocessor.process_utterance()</span></code></a></li>
+<li><a class="reference internal" href="#src.fs_two.preprocessor.preprocessor.Preprocessor.remove_outlier"><code class="docutils literal notranslate"><span class="pre">Preprocessor.remove_outlier()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

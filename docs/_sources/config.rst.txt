@@ -1,7 +1,0 @@
-.. Text-to-Speech Python Project Documentation
-================
-
-.. automodule:: src.tts_king
-   :members:
-   :undoc-members:
-   :show-inheritance:

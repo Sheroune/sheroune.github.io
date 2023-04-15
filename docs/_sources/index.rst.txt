@@ -7,7 +7,9 @@
 
    source/usage
    source/config
-   source/docs
+   source/synthesis
+   source/preprocess
+   source/train
    genindex
 
 

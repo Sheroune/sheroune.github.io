@@ -1,0 +1,6 @@
+Синтез речи
+=================================================
+
+
+.. autoclass:: src.cssm.CSSM
+   :members: generate_mel, text_preprocess, mel_to_wav

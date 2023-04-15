@@ -1,7 +1,0 @@
-audio\_process module
-=====================
-
-.. automodule:: src.audio_process
-   :members:
-   :undoc-members:
-   :show-inheritance:

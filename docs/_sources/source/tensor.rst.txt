@@ -1,7 +1,0 @@
-tensor module
-=============
-
-.. automodule:: tensor
-   :members:
-   :undoc-members:
-   :show-inheritance:

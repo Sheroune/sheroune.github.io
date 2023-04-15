@@ -1,4 +1,0 @@
-.. automodule:: src.fs_two.preprocessor.preprocessor
-   :members:
-   :undoc-members:
-   :show-inheritance:

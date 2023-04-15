@@ -1,7 +1,0 @@
-audio\_process module
-=====================
-
-.. automodule:: src.ru_ipa_g2p.ipa_g2p
-   :members:
-   :undoc-members:
-   :show-inheritance:

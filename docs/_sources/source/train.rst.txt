@@ -1,7 +1,6 @@
-train module
-============
+Обучение своей модели
+=================================================
+
 
 .. automodule:: train
    :members:
-   :undoc-members:
-   :show-inheritance:

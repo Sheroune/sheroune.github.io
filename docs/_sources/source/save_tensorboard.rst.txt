@@ -1,7 +1,0 @@
-save\_tensorboard module
-========================
-
-.. automodule:: save_tensorboard
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,0 +1,6 @@
+Предобработка данных для обучения
+=================================================
+
+
+.. autoclass:: src.fs_two.preprocessor.preprocessor.Preprocessor
+   :members: build_from_path, process_utterance, get_alignment, remove_outlier, normalize
